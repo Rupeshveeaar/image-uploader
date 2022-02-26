@@ -1,0 +1,32 @@
+{% extends 'enroll/base.html'%}
+{% block title %} Changed_Password_Page {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="col-sm mx-auto border rounered py-4 px-4">
+<div class="form-group  mx-auto">
+    <h3 class="alert alert-info border rounded ">
+        Change Password
+        </h3>
+<p class="align-center">           
+<form action="" method="POST" class="form-control" class="d-inline">
+    {% csrf_token %}
+    {% for form in form %}
+     {{form.label_tag}}
+     <p>
+     {{form}}
+     </p>
+     {{form.errors|striptags}} 
+    {% endfor %}
+    <input type="submit" value="Chnaged_Password" class="btn btn-primary btn-sm">
+   <a href="{% url 'home' %}" class="btn btn-warning btn-sm">Back_To_Home</a>
+</form>
+</p>    
+</div>
+</div>
+</div>
+
+{% for message in messages %}
+{{message}}
+{% endfor %}
+{% endblock %}

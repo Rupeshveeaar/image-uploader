@@ -1,0 +1,36 @@
+{% extends 'enroll/base.html'%}
+
+
+{% block title %} Sign_Up_Page {% endblock %}
+
+{%  block content %} 
+<div class="container mt-5">
+    <div class="col-sm mx-auto border rounered py-4 px-4">
+<div class="form-group  mx-auto">
+   
+<h3 class="alert alert-primary border rounded ">
+    Create an Account
+    </h3>
+    {% for message in messages %}
+<h3 class="alert alert-info border rounded">
+    {{message}}
+    </h3>
+{% endfor %}
+<form action="" method="POST" class="d-inline " class="form-control" novalidate>
+    {% csrf_token %}
+    {% for form in form %}
+     {{form.label_tag}}
+     <p>
+     {{form}} <br>
+     </p>
+     {{form.errors|striptags}} 
+    {% endfor %} 
+<input type="submit" value="submit" class="btn btn-primary btn-sm">   
+ <a href="{% url 'login' %}" class="btn btn-warning btn-sm ">Login</a>
+</form>
+</div>
+</div>
+</div>
+
+
+{% endblock %}

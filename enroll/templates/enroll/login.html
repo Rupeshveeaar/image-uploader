@@ -1,0 +1,30 @@
+{% extends 'enroll/base.html'%}
+{% block title %} Login_Page {% endblock %}
+{% block content %}
+<div class="row align" >
+    <div class="col-sm-8 offset-2">
+    <h4 class="text-center alert alert-info mt-5 ">Login</h4>
+{% for message in messages %}
+<h4 class="text-center alert alert-danger ">{{message}}</h4>
+
+{% endfor %}
+<form action="" method="POST" class="d-inline " class="form-control">
+    {% csrf_token %}
+    {% for form in form %}
+     {{form.label_tag}}
+     <p >
+     {{form}}
+     </p>
+     {{form.errors|striptags}} 
+    {% endfor %}
+    <div class="form-check mb-5">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="remember" required > Remember me
+        </label>
+      </div>
+    <input type="submit" value="Login" class="btn btn-primary btn-sm" >
+     <a href="{% url 'sign' %}"  class="btn btn-warning btn-sm">Sign_Up</a>
+</form>
+</div>
+</div>
+{% endblock %}
